@@ -369,7 +369,7 @@ export default function Home() {
               color: "#06425A",
               textAlign: "center",
             }}>
-              Enter into the thrilling world of the Fantasy stock market. Create a strategy-based virtual portfolio of stocks of real market listed companies and get a chance to win points based on all the companies' performance in the real market.
+              Enter into the thrilling world of the Fantasy stock market. Create a strategy-based virtual portfolio of stocks of real market listed companies and get a chance to win points based on all the companies performance in the real market.
             </Text>
           </Center>
 
