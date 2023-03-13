@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 export const Navbar = () => {
   return (
-    <Box>
+    <Box mx={40}>
       <Logo />
     </Box>
   );

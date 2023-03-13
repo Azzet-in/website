@@ -17,21 +17,21 @@ import {
 } from "@mantine/core";
 import useDeviceSize from "src/utils/useDeviceSize";
 import { Navbar } from "src/components/shared/navbar";
+import { motion } from 'framer-motion';
 
 const useStyles = createStyles((theme) => ({
   container: {
     overflow: "hidden",
-    paddingLeft: 50,
-    paddingRight: 50,
+    paddingLeft: 30,
+    paddingRight: 30,
     paddingBottom: 50,
   },
   title: {
     color: "#06425A",
-    fontSize: "5.5rem",
-    fontFamily: "Poppins",
-    fontWeight: 800,
+    fontSize: 88,
     lineHeight: "5.8rem",
-
+    fontFamily: 'Satoshi',
+    fontWeight: 900,
     [theme.fn.smallerThan("md")]: {
       textAlign: "center",
       fontSize: "2.5rem",
@@ -47,7 +47,7 @@ const useStyles = createStyles((theme) => ({
   },
   data: {
     color: "#06425A",
-    fontSize: 28,
+    fontSize: 27.25,
     fontFamily: "Poppins",
     fontWeight: 600,
     textAlign: "center",
@@ -56,19 +56,18 @@ const useStyles = createStyles((theme) => ({
   },
   info: {
     color: "#06425A",
-    fontSize: 14,
+    fontSize: 13.63,
     fontFamily: "Poppins",
     fontWeight: 500,
     textAlign: "center",
     padding: 0,
     marginTop: -10,
   },
-
   features: {
     color: "#06425A",
     fontSize: 50,
-    fontFamily: "Poppins",
-    fontWeight: 800,
+    fontFamily: "Satoshi",
+    fontWeight: 900,
     textAlign: "center",
   },
   features1: {
@@ -76,6 +75,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: 23,
     fontFamily: "Poppins",
     fontWeight: 600,
+    paddingTop: 50,
   },
   featuresDescription: {
     color: "#FFFFFF",
@@ -90,6 +90,15 @@ export default function Home() {
   const theme = useMantineTheme();
   const { width } = useDeviceSize();
 
+  const bounceTransition = {
+    y: {
+      duration: 2.4,
+      repeat: Infinity,
+      ease: "linear",
+      repeatType: "loop"
+    }
+  };
+
   return (
     <>
       <Head>
@@ -99,7 +108,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.bg}>
-      <Navbar />
+        <Navbar />
 
         <Box className={classes.container}>
           <Grid>
@@ -139,18 +148,25 @@ export default function Home() {
                 </Grid>
               </Box>
               <Center>
-                <Image
-                  src="/assets/image/landing.svg"
-                  alt="landing"
-                  width={width > 768 ? 500 : 300}
-                  sx={{ marginTop: 20 }}
-                />
+                <motion.div
+                  animate={{
+                    y: ["0px", "12px", "0px"],
+                  }}
+                  transition={bounceTransition}
+                >
+                  <Image
+                    src="/assets/image/landing.svg"
+                    alt="landing"
+                    width={width > 768 ? 464 : 300}
+                    sx={{ marginTop: 20 }}
+                  />
+                </motion.div>
               </Center>
             </Grid.Col>
           </Grid>
         </Box>
 
-        <Container sx={{ maxWidth: "60%", paddingBottom: 100 }}>
+        <Container size={"xl"} sx={{ paddingBottom: 50, paddingTop: 60 }}>
           <Grid>
             <Grid.Col lg={4} md={4} xs={12}>
               <Box>
@@ -189,28 +205,27 @@ export default function Home() {
                       paddingLeft: 15,
                       paddingRight: 8,
                       zIndex: 1,
-                      paddingTop: 50,
                       marginTop: 20,
+                      height: 212
                     }}
                   >
                     <Grid>
-                      <Grid.Col span={6}>
+                      <Grid.Col span={5}>
                         <Title className={classes.features1}>Win</Title>
                         <Text className={classes.featuresDescription}>
                           by participating in different gamified contests and
                           get the thrill of investing in the stock market
                         </Text>
                       </Grid.Col>
-                      <Grid.Col
-                        span={6}
-                        sx={{
-                          backgroundImage: "url('/assets/image/win.svg')",
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "bottom",
-                          height: 175,
-                        }}
-                      ></Grid.Col>
+                      <Grid.Col span={7}>
+                        <Image
+                          src="/assets/image/win.svg"
+                          alt="interact"
+                          width={185}
+                          height={203}
+                          sx={{ marginLeft: 47, marginTop: 2, borderRadius: 15 }}
+                        />
+                      </Grid.Col>
                     </Grid>
                   </Box>
                 </Box>
@@ -254,28 +269,27 @@ export default function Home() {
                       paddingLeft: 15,
                       paddingRight: 8,
                       zIndex: 1,
-                      paddingTop: 50,
                       marginTop: 20,
+                      height: 212
                     }}
                   >
                     <Grid>
-                      <Grid.Col span={6}>
+                      <Grid.Col span={5}>
                         <Title className={classes.features1}>Learn</Title>
                         <Text className={classes.featuresDescription}>
                           the basics of investment and market strategies from
                           the market itself
                         </Text>
                       </Grid.Col>
-                      <Grid.Col
-                        span={6}
-                        sx={{
-                          backgroundImage: "url('/assets/image/learn.svg')",
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "bottom",
-                          height: 175,
-                        }}
-                      ></Grid.Col>
+                      <Grid.Col span={7}>
+                        <Image
+                          src="/assets/image/learn.svg"
+                          alt="interact"
+                          width={190}
+                          height={191}
+                          sx={{ marginLeft: 40, marginTop: 12 }}
+                        />
+                      </Grid.Col>
                     </Grid>
                   </Box>
                 </Box>
@@ -319,34 +333,46 @@ export default function Home() {
                       paddingLeft: 15,
                       paddingRight: 8,
                       zIndex: 1,
-                      paddingTop: 50,
+                      height: 212,
                       marginTop: 20,
                     }}
                   >
                     <Grid>
-                      <Grid.Col span={6}>
+                      <Grid.Col span={5}>
                         <Title className={classes.features1}>Interact</Title>
                         <Text className={classes.featuresDescription}>
                           and develop your skills with the help of experts
                           through the Azzet community
                         </Text>
                       </Grid.Col>
-                      <Grid.Col
-                        span={6}
-                        sx={{
-                          backgroundImage: "url('/assets/image/interact.svg')",
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "bottom",
-                          height: 175,
-                        }}
-                      ></Grid.Col>
+                      <Grid.Col span={7}>
+                        <Image
+                          src="/assets/image/interact.svg"
+                          alt="interact"
+                          width={210}
+                          height={202}
+                          sx={{ marginLeft: 20 }}
+                        />
+                      </Grid.Col>
                     </Grid>
                   </Box>
                 </Box>
               </Box>
             </Grid.Col>
           </Grid>
+
+          <Center px={120} py={50}>
+            <Text sx={{
+              fontSize: 24,
+              fontFamily: "Poppins",
+              fontWeight: 400,
+              color: "#06425A",
+              textAlign: "center",
+            }}>
+              Enter into the thrilling world of the Fantasy stock market. Create a strategy-based virtual portfolio of stocks of real market listed companies and get a chance to win points based on all the companies' performance in the real market.
+            </Text>
+          </Center>
+
         </Container>
 
         <FeatureSection />

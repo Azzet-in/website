@@ -19,6 +19,7 @@
       "src/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  // include otf files
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.otf"],
   "exclude": ["node_modules"]
 }
