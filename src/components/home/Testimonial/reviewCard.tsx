@@ -59,7 +59,7 @@ const ReviewCard = ({ image, review, id, activeSlide }: CardProps) => {
 
       return () => clearInterval(interval);
     }
-  }, [activeSlide]);
+  }, [activeSlide, id]);
 
   return (
     <Center
