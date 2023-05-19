@@ -1,4 +1,6 @@
 import { createStyles, Text, Container, Image, Grid } from "@mantine/core";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Logo } from "./logo";
 
 const useStyles = createStyles((theme) => ({
@@ -8,8 +10,14 @@ const useStyles = createStyles((theme) => ({
   },
 
   logo: {
-    maxWidth: 200,
-
+    marginTop: -25,
+    justifyContent: "center",
+    [theme.fn.smallerThan("sm")]: {
+      maxWidth: "100%",
+    },
+    [theme.fn.largerThan("sm")]: {
+      maxWidth: 200,
+    },
     [theme.fn.smallerThan("sm")]: {
       display: "flex",
       flexDirection: "column",
@@ -61,6 +69,7 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: theme.spacing.xs / 2,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    textAlign: "center",
   },
 
   social: {
@@ -88,25 +97,19 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 400,
     fontFamily: "Poppins",
     fontSize: 14,
-    marginBottom: 34,
   },
 }));
 
 const socialLinks = [
-  {
-    title: "Facebook",
-    href: "https://www.facebook.com/mantine.dev",
-    icon: "/assets/image/fb.png",
-  },
   {
     title: "Twitter",
     href: "https://twitter.com/mantine_dev",
     icon: "/assets/image/twitter.png",
   },
   {
-    title: "YouTube",
-    href: "https://www.youtube.com/channel/UC1fZ5g1Kv8kW5x5xVJ9y9Yw",
-    icon: "/assets/image/yt.png",
+    title: "Instagram",
+    href: "https://www.instagram.com/azzet.finance/",
+    icon: "/assets/image/insta.png",
   },
   {
     title: "LinkedIn",
@@ -122,57 +125,74 @@ const links = [
   },
   {
     title: "About Us",
-    href: "/about",
+    href: "/AboutUs",
   },
   {
     title: "How to Play",
-    href: "/faq",
+    href: "/",
   },
-  {
-    title: "Jobs",
-    href: "/contact",
-  },
+  // {
+  //   title: "Jobs",
+  //   href: "/contact",
+  // },
   {
     title: "Invite Friends",
-    href: "/contact",
+    href: "/",
   },
-  {
-    title: "Helpdesk",
-    href: "/contact",
-  },
-  {
-    title: "Community Guidelines",
-    href: "/contact",
-  },
+  // {
+  //   title: "Helpdesk",
+  //   href: "/contact",
+  // },
+  // {
+  //   title: "Community Guidelines",
+  //   href: "/contact",
+  // },
 ];
 
 export function Footer() {
   const { classes } = useStyles();
+  const router = useRouter();
 
   return (
     <footer className={classes.footer}>
       <Container>
         <Grid>
-          <Grid.Col lg={4}>
+          <Grid.Col lg={4} sm={12}>
             <div className={classes.logo}>
               <Logo />
-              <Grid>
+              <Grid
+                sx={{
+                  marginTop: -20,
+                  marginBottom: 10,
+                }}
+              >
+                <Grid.Col span={1}></Grid.Col>
                 {socialLinks.map((e, i) => (
                   <Grid.Col key={i} span={3}>
                     <Image src={e.icon} alt={e.title} width={25} height={25} />
                   </Grid.Col>
                 ))}
+                <Grid.Col span={1}></Grid.Col>
               </Grid>
             </div>
           </Grid.Col>
-          <Grid.Col lg={8}>
+          <Grid.Col lg={8} sm={12}>
             <div>
               <Grid>
                 {links.map((e, i) => (
-                  <Grid.Col key={i} lg={6} sm={12}>
-                    <Text className={classes.title} size="sm" weight={500}>
+                  <Grid.Col
+                    key={i}
+                    lg={6}
+                    sm={12}
+                    sx={(theme) => ({
+                      [theme.fn.smallerThan("sm")]: {
+                        textAlign: "center",
+                      },
+                    })}
+                  >
+                    <Link className={classes.title} href={e.href}>
                       {e.title}
-                    </Text>
+                    </Link>
                   </Grid.Col>
                 ))}
               </Grid>
@@ -181,26 +201,30 @@ export function Footer() {
         </Grid>
       </Container>
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
+        <Text color='dimmed' size='sm'>
           © {new Date().getFullYear()} Azzet. All rights reserved.
         </Text>
         <Text className={classes.afterFooterText}>CORPORATE OFFICE</Text>
         <Text className={classes.afterFooterDescription}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-          mollitia aspernatur sequi porro ipsum, error assumenda aliquam sit
-          alias beatae dignissimos fuga ab eius illum officiis amet tempore!
-          Architecto, pariatur?
+          114/118, Manek Bhavan, Room No. 33, 2nd, 2nd Floor, Cavel Street,
         </Text>
-        <Grid>
+        <Text className={classes.afterFooterDescription}>
+          Gaiwadi Kalbadevi, Mumbai, Mumbai City, Maharashtra, India - 400002
+        </Text>
+        <Grid
+          sx={{
+            marginTop: 34,
+          }}
+        >
           <Grid.Col lg={6} sm={12}>
-            <Text className={classes.title} size="sm" weight={500}>
+            <Link className={classes.title} href='/PrivacyPolicy'>
               Privacy Policy
-            </Text>
+            </Link>
           </Grid.Col>
           <Grid.Col lg={6} sm={12}>
-            <Text className={classes.title} size="sm" weight={500}>
+            <Link className={classes.title} href='/TnC'>
               Terms & Conditions
-            </Text>
+            </Link>
           </Grid.Col>
         </Grid>
       </Container>

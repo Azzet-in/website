@@ -17,7 +17,8 @@ import {
 } from "@mantine/core";
 import useDeviceSize from "src/utils/useDeviceSize";
 import { Navbar } from "src/components/shared/navbar";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -30,7 +31,7 @@ const useStyles = createStyles((theme) => ({
     color: "#06425A",
     fontSize: 88,
     lineHeight: "5.8rem",
-    fontFamily: 'Satoshi',
+    fontFamily: "Satoshi",
     fontWeight: 900,
     [theme.fn.smallerThan("md")]: {
       textAlign: "center",
@@ -75,7 +76,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: 23,
     fontFamily: "Poppins",
     fontWeight: 600,
-    paddingTop: 50,
+    paddingTop: 40,
   },
   featuresDescription: {
     color: "#FFFFFF",
@@ -88,24 +89,24 @@ const useStyles = createStyles((theme) => ({
 const Home = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const { width } = useDeviceSize();
+  const { width, height } = useDeviceSize();
 
   const bounceTransition = {
     y: {
       duration: 2.4,
       repeat: Infinity,
       ease: "linear",
-      repeatType: "loop"
-    }
+      repeatType: "loop",
+    },
   };
 
   return (
     <>
       <Head>
         <title>AZZET</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className={styles.bg}>
         <Navbar />
@@ -118,14 +119,21 @@ const Home = () => {
                 <Title className={classes.title}>to win, learn,</Title>
                 <Title className={classes.title}>and interact</Title>
                 <Box className={classes.download}>
+                  <Link
+                    href={
+                      "https://play.google.com/store/apps/details?id=com.azzet.application"
+                    }
+                    passHref
+                  >
+                    <Image
+                      src='/assets/image/googlePlay.png'
+                      alt='googlePlay'
+                      width={200}
+                    />
+                  </Link>
                   <Image
-                    src="/assets/image/googlePlay.png"
-                    alt="googlePlay"
-                    width={200}
-                  />
-                  <Image
-                    src="/assets/image/android.png"
-                    alt="googlePlay"
+                    src='/assets/image/android.png'
+                    alt='googlePlay'
                     width={182}
                     sx={{ marginTop: 12 }}
                   />
@@ -133,7 +141,7 @@ const Home = () => {
               </Box>
             </Grid.Col>
             <Grid.Col lg={6} sm={12}>
-              <Box sx={{ justifyContent: "right" }}>
+              {/* <Box sx={{ justifyContent: "right" }}>
                 <Grid>
                   <Grid.Col lg={5} sm={12}></Grid.Col>
                   <Grid.Col lg={3} sm={6}>
@@ -146,7 +154,7 @@ const Home = () => {
                   </Grid.Col>
                   <Grid.Col lg={1} sm={12}></Grid.Col>
                 </Grid>
-              </Box>
+              </Box> */}
               <Center>
                 <motion.div
                   animate={{
@@ -155,8 +163,8 @@ const Home = () => {
                   transition={bounceTransition}
                 >
                   <Image
-                    src="/assets/image/landing.svg"
-                    alt="landing"
+                    src='/assets/image/landing.svg'
+                    alt='landing'
                     width={width > 768 ? 464 : 300}
                     sx={{ marginTop: 20 }}
                   />
@@ -202,28 +210,41 @@ const Home = () => {
                     sx={{
                       backgroundColor: "#06425A",
                       borderRadius: 15,
-                      paddingLeft: 15,
-                      paddingRight: 8,
+                      paddingLeft: 10,
+                      paddingRight: 10,
                       zIndex: 1,
                       marginTop: 20,
-                      height: 212
+                      height: 212,
                     }}
                   >
                     <Grid>
-                      <Grid.Col span={5}>
+                      <Grid.Col span={6}>
                         <Title className={classes.features1}>Win</Title>
                         <Text className={classes.featuresDescription}>
                           by participating in different gamified contests and
                           get the thrill of investing in the stock market
                         </Text>
                       </Grid.Col>
-                      <Grid.Col span={7}>
+                      <Grid.Col span={6}>
                         <Image
-                          src="/assets/image/win.svg"
-                          alt="interact"
-                          width={185}
-                          height={203}
-                          sx={{ marginLeft: 47, marginTop: 2, borderRadius: 15 }}
+                          src='/assets/image/win.svg'
+                          alt='interact'
+                          fit='contain'
+                          height={202}
+                          width={202}
+                          sx={(theme) => ({
+                            // marginLeft: 17,
+                            // marginTop: 2,
+                            borderRadius: 15,
+                            [theme.fn.largerThan("sm")]: {
+                              marginLeft: 9,
+                              marginTop: 2,
+                            },
+                            [theme.fn.smallerThan("sm")]: {
+                              marginLeft: -35,
+                              marginTop: 2,
+                            },
+                          })}
                         />
                       </Grid.Col>
                     </Grid>
@@ -270,7 +291,7 @@ const Home = () => {
                       paddingRight: 8,
                       zIndex: 1,
                       marginTop: 20,
-                      height: 212
+                      height: 212,
                     }}
                   >
                     <Grid>
@@ -283,11 +304,20 @@ const Home = () => {
                       </Grid.Col>
                       <Grid.Col span={7}>
                         <Image
-                          src="/assets/image/learn.svg"
-                          alt="interact"
+                          src='/assets/image/learn.svg'
+                          alt='interact'
+                          fit='contain'
                           width={190}
                           height={191}
-                          sx={{ marginLeft: 40, marginTop: 12 }}
+                          sx={(theme) => ({
+                            marginTop: 13,
+                            [theme.fn.largerThan("sm")]: {
+                              marginLeft: 35,
+                            },
+                            [theme.fn.smallerThan("sm")]: {
+                              marginLeft: -10,
+                            },
+                          })}
                         />
                       </Grid.Col>
                     </Grid>
@@ -347,11 +377,11 @@ const Home = () => {
                       </Grid.Col>
                       <Grid.Col span={7}>
                         <Image
-                          src="/assets/image/interact.svg"
-                          alt="interact"
-                          width={210}
+                          src='/assets/image/interact.svg'
+                          alt='interact'
+                          fit='contain'
                           height={202}
-                          sx={{ marginLeft: 20 }}
+                          // sx={{ marginLeft: 20 }}
                         />
                       </Grid.Col>
                     </Grid>
@@ -361,18 +391,22 @@ const Home = () => {
             </Grid.Col>
           </Grid>
 
-          <Center px={120} py={50}>
-            <Text sx={{
-              fontSize: 24,
-              fontFamily: "Poppins",
-              fontWeight: 400,
-              color: "#06425A",
-              textAlign: "center",
-            }}>
-              Enter into the thrilling world of the Fantasy stock market. Create a strategy-based virtual portfolio of stocks of real market listed companies and get a chance to win points based on all the companies performance in the real market.
+          <Center py={50}>
+            <Text
+              sx={{
+                fontSize: 24,
+                fontFamily: "Poppins",
+                fontWeight: 400,
+                color: "#06425A",
+                textAlign: "center",
+              }}
+            >
+              Enter into the thrilling world of the fantasy stock market. Create
+              a strategy-based virtual portfolio of stocks of real market listed
+              companies and get a chance to win points based on all the
+              companies performance in the real market.
             </Text>
           </Center>
-
         </Container>
 
         <FeatureSection />
@@ -382,6 +416,6 @@ const Home = () => {
       </main>
     </>
   );
-}
+};
 
 export default Home;

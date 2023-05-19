@@ -13,7 +13,7 @@ export const MOCKDATA = [
     icon: <QuestionMark size={32} />,
     question: "Privacy focused",
     answer:
-      "People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma",
+      "We take the security of your personal information very seriously at Azzet. We use industry-standard security measures to protect your personal information and ensure that it is not shared with third parties.",
   },
   {
     icon: <QuestionMark size={32} />,
@@ -92,13 +92,13 @@ export function FAQSection() {
         <Title className={classes.title1}>FAQ’s</Title>
         <Title className={classes.title2}>Frequently Asked Questions</Title>
 
-        <Text size="sm" className={classes.description}>
+        <Text size='sm' className={classes.description}>
           Have any questions? We’re here to assist you
         </Text>
       </Container>
 
       <Container className={classes.wrapper}>
-        <Grid gutter={2} gutterXs={5} gutterMd="xl" gutterXl={75}>
+        <Grid gutter={2} gutterXs={5} gutterMd='xl' gutterXl={75}>
           {MOCKDATA.map((item, index) => (
             <Grid.Col
               lg={4}

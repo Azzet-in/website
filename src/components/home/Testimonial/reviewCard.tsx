@@ -1,12 +1,13 @@
 import {
   Paper,
   Title,
-  Button,
+  Image,
   createStyles,
   Text,
   Center,
+  Box,
 } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface CardProps {
   id: number;
@@ -48,23 +49,47 @@ const useStyles = createStyles((theme) => ({
 
 const ReviewCard = ({ image, review, id, activeSlide }: CardProps) => {
   const { classes } = useStyles();
+  const [rotate, setRotate] = useState(0);
+
+  useEffect(() => {
+    if (id === activeSlide) {
+      const interval = setInterval(() => {
+        setRotate((prev) => prev + 1);
+      }, 10);
+
+      return () => clearInterval(interval);
+    }
+  }, [activeSlide]);
+
   return (
-    <Center>
-      <Paper
-        p="xl"
-        radius="md"
+    <Center
+      p='xl'
+      className={classes.card}
+      style={{
+        opacity: activeSlide === id ? 1 : 0.5,
+      }}
+    >
+      <Box
         sx={{
-          backgroundImage:
-            "url('https://2k21.s3.ap-south-1.amazonaws.com/Group+109+(2).svg')",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          opacity: id === activeSlide ? 1 : 0.5,
-          height: id === activeSlide ? 233 : 200,
+          position: "absolute",
+          top: 0,
+          left: "50%",
+          transform: "translate(-50%, 0%)",
+          zIndex: -1,
         }}
-        className={classes.card}
       >
-        <Title className={classes.title}>{review}</Title>
-      </Paper>
+        <Image
+          src={"https://2k21.s3.ap-south-1.amazonaws.com/Group+109+(2).svg"}
+          alt={"image"}
+          width={233}
+          height={233}
+          fit='contain'
+          style={{
+            transform: `rotate(${rotate}deg)`,
+          }}
+        />
+      </Box>
+      <Title className={classes.title}>{review}</Title>
     </Center>
   );
 };
