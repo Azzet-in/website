@@ -113,7 +113,7 @@ const socialLinks = [
   },
   {
     title: "LinkedIn",
-    href: "https://www.linkedin.com/company/mantine-dev",
+    href: "https://www.linkedin.com/company/azzet-finance/",
     icon: "/assets/image/linkedin.png",
   },
 ];
@@ -169,7 +169,14 @@ export function Footer() {
                 <Grid.Col span={1}></Grid.Col>
                 {socialLinks.map((e, i) => (
                   <Grid.Col key={i} span={3}>
-                    <Image src={e.icon} alt={e.title} width={25} height={25} />
+                    <Link href={e.href}>
+                      <Image
+                        src={e.icon}
+                        alt={e.title}
+                        width={25}
+                        height={25}
+                      />
+                    </Link>
                   </Grid.Col>
                 ))}
                 <Grid.Col span={1}></Grid.Col>

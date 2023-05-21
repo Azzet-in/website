@@ -5,9 +5,9 @@ import FaqItem from "./faqItem";
 export const MOCKDATA = [
   {
     icon: <QuestionMark size={32} />,
-    question: "Extreme performance",
+    question: "Private contest",
     answer:
-      "This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit",
+      "You can create your own private contest on Azzet. Simply select the 'Create Contest' option and fill in the required information. You can then invite your friends or others to join the contest using the unique contest code.",
   },
   {
     icon: <QuestionMark size={32} />,
@@ -17,9 +17,9 @@ export const MOCKDATA = [
   },
   {
     icon: <QuestionMark size={32} />,
-    question: "No third parties",
+    question: "No real trading",
     answer:
-      "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
+      "You DO NOT require a trading/Demat account to participate in the contests. Upon entering any contest to create your portfolio, you get virtual money of in total balance to create a virtual portfolio.",
   },
   {
     icon: <QuestionMark size={32} />,
@@ -31,7 +31,7 @@ export const MOCKDATA = [
     icon: <QuestionMark size={32} />,
     question: "24/7 Support",
     answer:
-      "Rapidash usually can be seen casually cantering in the fields and plains, Skitty is known to chase around after its own tail",
+      "We are always happy to help and answer any questions you may have. If you have more questions or need help with Azzet, you can contact our customer support team at admin@azzet.in | +91 8401698962.",
   },
 ];
 
