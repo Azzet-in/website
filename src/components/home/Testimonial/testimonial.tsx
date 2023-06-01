@@ -9,11 +9,12 @@ import {
   Group,
   Rating,
 } from "@mantine/core";
-import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReviewCard from "./reviewCard";
+import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import { Carousel } from "@mantine/carousel";
 
 const data = [
   {
@@ -77,7 +78,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const TestimonialSection = () => {
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay = useRef(Autoplay({ delay: 4000 }));
 
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
@@ -90,6 +91,16 @@ const TestimonialSection = () => {
       <ReviewCard {...item} activeSlide={activeSlide} id={index} />
     </Carousel.Slide>
   ));
+
+  // useEffect(() => {
+  //   // const interval = setInterval(() => {
+  //   //   if (autoplay.current) {
+  //   autoplay.current.init;
+  //   autoplay.current.play;
+  //   // }
+  //   // }, 2000);
+  //   // return () => clearInterval(interval);
+  // }, [autoplay.current]);
 
   return (
     <Box sx={{ paddingBottom: 80 }}>
@@ -107,6 +118,9 @@ const TestimonialSection = () => {
           loop={true}
           onSlideChange={(index) => setActiveSlide(index)}
           withControls={false}
+          plugins={[autoplay.current] as any}
+          onMouseEnter={autoplay.current.stop}
+          onMouseLeave={autoplay.current.reset}
         >
           {slides}
         </Carousel>

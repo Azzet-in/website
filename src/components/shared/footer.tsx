@@ -103,7 +103,7 @@ const useStyles = createStyles((theme) => ({
 const socialLinks = [
   {
     title: "Twitter",
-    href: "https://twitter.com/mantine_dev",
+    href: "https://twitter.com/Azzet_finance",
     icon: "/assets/image/twitter.png",
   },
   {
@@ -169,7 +169,7 @@ export function Footer() {
                 <Grid.Col span={1}></Grid.Col>
                 {socialLinks.map((e, i) => (
                   <Grid.Col key={i} span={3}>
-                    <Link href={e.href}>
+                    <Link href={e.href} target='_blank'>
                       <Image
                         src={e.icon}
                         alt={e.title}
