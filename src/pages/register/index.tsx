@@ -322,7 +322,7 @@ const Registrations = (props: PaperProps) => {
 
             {/* TODO paynow button*/}
 
-            <Group position='apart' mt='xl'>
+            <Group position='apart' mt='xl' pt={20}>
               <Anchor component='button' type='button' color='dimmed' size='xs'>
                 {/* Don't have an account? Register */}
               </Anchor>
