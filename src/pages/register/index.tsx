@@ -17,6 +17,7 @@ import {
   NumberInput,
   Image as MantineImage,
   SimpleGrid,
+  Center,
 } from "@mantine/core";
 import { Navbar } from "src/components/shared/navbar";
 import {
@@ -226,6 +227,25 @@ const Registrations = (props: PaperProps) => {
                 disabled
               />
               <div className={classes.dropzoneWrapper}>
+                <div
+                  style={{
+                    justifyContent: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    paddingTop: 20,
+                  }}
+                >
+                  <Image
+                    src='/assets/image/upi.png'
+                    alt='upi'
+                    width={300}
+                    height={300}
+                  />
+                  <Text ta='center' fw={700} pt={20} pb={20}>
+                    dhfi63526@barodampay
+                  </Text>
+                </div>
                 <Dropzone
                   aria-required={true}
                   multiple={false}
@@ -238,57 +258,56 @@ const Registrations = (props: PaperProps) => {
                   accept={IMAGE_MIME_TYPE}
                   maxSize={10 * 1024 ** 2}
                 >
-                  {files.length === 0 ? (
-                    <div style={{ pointerEvents: "none" }}>
-                      <Group position='center'>
-                        <Dropzone.Accept>
-                          <IconDownload
-                            size={50}
-                            color={theme.colors[theme.primaryColor][6]}
-                            stroke={1.5}
-                          />
-                        </Dropzone.Accept>
-                        <Dropzone.Reject>
-                          <IconX
-                            size={50}
-                            color={theme.colors.red[6]}
-                            stroke={1.5}
-                          />
-                        </Dropzone.Reject>
-                        <Dropzone.Idle>
-                          <Image
-                            src='/assets/image/upi.png'
-                            alt='upi'
-                            width={300}
-                            height={300}
-                          />
-                        </Dropzone.Idle>
-                      </Group>
+                  {/* {files.length === 0 ? ( */}
+                  <div style={{ pointerEvents: "none" }}>
+                    <Group position='center'>
+                      <Dropzone.Accept>
+                        <IconDownload
+                          size={50}
+                          color={theme.colors[theme.primaryColor][6]}
+                          stroke={1.5}
+                        />
+                      </Dropzone.Accept>
+                      <Dropzone.Reject>
+                        <IconX
+                          size={50}
+                          color={theme.colors.red[6]}
+                          stroke={1.5}
+                        />
+                      </Dropzone.Reject>
+                      <Dropzone.Idle>
+                        {/* <Image
+                          src='/assets/image/upi.png'
+                          alt='upi'
+                          width={300}
+                          height={300}
+                        /> */}
+                      </Dropzone.Idle>
+                    </Group>
 
-                      <Text ta='center' fw={700} fz='lg' mt='xl'>
-                        <Dropzone.Accept>Drop files here</Dropzone.Accept>
-                        <Dropzone.Reject>
-                          Pdf file less than 30mb
-                        </Dropzone.Reject>
-                        <Dropzone.Idle>dhfi63526@barodampay</Dropzone.Idle>
-                      </Text>
-                      <Text ta='center' fz='sm' mt='xs' c='dimmed'>
-                        Drag&apos;n&apos;drop files here to upload. We can
-                        accept only <i>image</i> files that are less than 5mb in
-                        size.
-                      </Text>
-                    </div>
-                  ) : (
-                    <div>
-                      <SimpleGrid
-                        cols={1}
-                        breakpoints={[{ maxWidth: "sm", cols: 1 }]}
-                        mt={previews.length > 0 ? "xl" : 0}
-                      >
-                        {previews}
-                      </SimpleGrid>
-                    </div>
-                  )}
+                    <Text ta='center' fw={700} fz='lg' mt='xl'>
+                      <Dropzone.Accept>Drop files here</Dropzone.Accept>
+                      <Dropzone.Reject>Pdf file less than 30mb</Dropzone.Reject>
+                      <Dropzone.Idle>
+                        {/* dhfi63526@barodampay */}
+                      </Dropzone.Idle>
+                    </Text>
+                    <Text ta='center' fz='sm' mt='xs' c='dimmed'>
+                      Upload payment screenshot. We can accept only <i>image</i>{" "}
+                      files that are less than 5mb in size.
+                    </Text>
+                  </div>
+                  {/* ) : ( */}
+                  <div>
+                    <SimpleGrid
+                      cols={1}
+                      breakpoints={[{ maxWidth: "sm", cols: 1 }]}
+                      mt={previews.length > 0 ? "xl" : 0}
+                    >
+                      {previews}
+                    </SimpleGrid>
+                  </div>
+                  {/* )} */}
                 </Dropzone>
                 <Button
                   className={classes.control}
