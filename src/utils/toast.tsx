@@ -24,6 +24,7 @@ const commonProps = {
     description: {
       fontSize: "16px !important",
       fontFamily: "DM Sans !important",
+      color: "#fff !important",
     },
   },
 };
