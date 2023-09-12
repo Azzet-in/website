@@ -136,7 +136,7 @@ const Registrations = (props: PaperProps) => {
       setSubmitted(true);
       window.scrollTo(0, 0);
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "https://azzet.in";
       }, 10000);
     }
   };
