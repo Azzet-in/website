@@ -58,6 +58,23 @@ const Support = (props: PaperProps) => {
     toast.success("Form submitted successfully");
   };
 
+  const support = ["Chat with us", "Email us", "Call us"];
+
+  const [isChat, setIsChat] = useState(false);
+
+  const handleSelect = (index: number) => {
+    if (index === 0) {
+      setIsChat(true);
+    } else {
+      setIsChat(false);
+      if (index === 1) {
+        window.location.href = "mailto: admin@azzet.in";
+      } else {
+        window.location.href = "tel: +91 8401698962";
+      }
+    }
+  };
+
   return (
     <main className={classes.bg}>
       <Navbar />
@@ -65,56 +82,85 @@ const Support = (props: PaperProps) => {
         <Paper radius='md' p='xl' withBorder {...props}>
           <h1>Help & Support</h1>
 
-          <form onSubmit={form.onSubmit(handleSubmit)}>
-            <Stack>
-              <TextInput
-                required
-                label='Full Name'
-                placeholder='Your name'
-                value={form.values.name}
-                onChange={(event) =>
-                  form.setFieldValue("name", event.currentTarget.value)
-                }
-                radius='md'
-              />
-
-              <TextInput
-                required
-                label='Contact Details'
-                placeholder='hello@azzet.in'
-                value={form.values.contact}
-                onChange={(event) =>
-                  form.setFieldValue("contact", event.currentTarget.value)
-                }
-                error={form.errors.email && "Invalid email"}
-                radius='md'
-              />
-
-              <Textarea
-                required
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            {support.map((item, index) => (
+              <Button
+                variant={isChat && index === 0 ? "filled" : "outline"}
+                color='dark'
+                radius='sm'
                 mt='md'
-                label='Message'
-                placeholder='Your message'
-                maxRows={10}
-                minRows={5}
-                autosize
-                name='message'
-                variant='default'
-                {...form.getInputProps("message")}
-              />
-            </Stack>
-
-            {/* TODO paynow button*/}
-
-            <Group position='apart' mt='xl' pt={20}>
-              <Anchor component='button' type='button' color='dimmed' size='xs'>
-                {/* Don't have an account? Register */}
-              </Anchor>
-              <Button type='submit' radius='xl'>
-                Submit
+                mx='xl'
+                size='lg'
+                onClick={() => handleSelect(index)}
+              >
+                {item}
               </Button>
-            </Group>
-          </form>
+            ))}
+          </div>
+
+          {isChat && (
+            <form onSubmit={form.onSubmit(handleSubmit)}>
+              <Stack>
+                <TextInput
+                  required
+                  label='Full Name'
+                  placeholder='Your name'
+                  value={form.values.name}
+                  onChange={(event) =>
+                    form.setFieldValue("name", event.currentTarget.value)
+                  }
+                  radius='md'
+                />
+
+                <TextInput
+                  required
+                  label='Contact Details'
+                  placeholder='hello@azzet.in'
+                  value={form.values.contact}
+                  onChange={(event) =>
+                    form.setFieldValue("contact", event.currentTarget.value)
+                  }
+                  error={form.errors.email && "Invalid email"}
+                  radius='md'
+                />
+
+                <Textarea
+                  required
+                  mt='md'
+                  label='Message'
+                  placeholder='Your message'
+                  maxRows={10}
+                  minRows={5}
+                  autosize
+                  name='message'
+                  variant='default'
+                  {...form.getInputProps("message")}
+                />
+              </Stack>
+
+              {/* TODO paynow button*/}
+
+              <Group position='apart' mt='xl' pt={20}>
+                <Anchor
+                  component='button'
+                  type='button'
+                  color='dimmed'
+                  size='xs'
+                >
+                  {/* Don't have an account? Register */}
+                </Anchor>
+                <Button type='submit' radius='xl' color='dark'>
+                  Submit
+                </Button>
+              </Group>
+            </form>
+          )}
         </Paper>
       </Container>
 
