@@ -25,6 +25,7 @@ import Link from "next/link";
 import { Navbar } from "../../components/shared/navbar";
 import { Footer } from "../../components/shared/footer";
 import { toast } from "src/utils/toast";
+import Head from "next/head";
 
 const useStyles = createStyles((theme) => ({
   bg: {
@@ -76,96 +77,105 @@ const Support = (props: PaperProps) => {
   };
 
   return (
-    <main className={classes.bg}>
-      <Navbar />
-      <Container pb={100} pt={50}>
-        <Paper radius='md' p='xl' withBorder {...props}>
-          <h1>Help & Support</h1>
+    <>
+      <Head>
+        <title>AZZET</title>
+        <meta name='description' content='' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <main className={classes.bg}>
+        <Navbar />
+        <Container pb={100} pt={50}>
+          <Paper radius='md' p='xl' withBorder {...props}>
+            <h1>Help & Support</h1>
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            {support.map((item, index) => (
-              <Button
-                variant={isChat && index === 0 ? "filled" : "outline"}
-                color='dark'
-                radius='sm'
-                mt='md'
-                mx='xl'
-                size='lg'
-                onClick={() => handleSelect(index)}
-              >
-                {item}
-              </Button>
-            ))}
-          </div>
-
-          {isChat && (
-            <form onSubmit={form.onSubmit(handleSubmit)}>
-              <Stack>
-                <TextInput
-                  required
-                  label='Full Name'
-                  placeholder='Your name'
-                  value={form.values.name}
-                  onChange={(event) =>
-                    form.setFieldValue("name", event.currentTarget.value)
-                  }
-                  radius='md'
-                />
-
-                <TextInput
-                  required
-                  label='Contact Details'
-                  placeholder='hello@azzet.in'
-                  value={form.values.contact}
-                  onChange={(event) =>
-                    form.setFieldValue("contact", event.currentTarget.value)
-                  }
-                  error={form.errors.email && "Invalid email"}
-                  radius='md'
-                />
-
-                <Textarea
-                  required
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              {support.map((item, index) => (
+                <Button
+                  variant={isChat && index === 0 ? "filled" : "outline"}
+                  color='dark'
+                  radius='sm'
                   mt='md'
-                  label='Message'
-                  placeholder='Your message'
-                  maxRows={10}
-                  minRows={5}
-                  autosize
-                  name='message'
-                  variant='default'
-                  {...form.getInputProps("message")}
-                />
-              </Stack>
-
-              {/* TODO paynow button*/}
-
-              <Group position='apart' mt='xl' pt={20}>
-                <Anchor
-                  component='button'
-                  type='button'
-                  color='dimmed'
-                  size='xs'
+                  mx='xl'
+                  size='lg'
+                  onClick={() => handleSelect(index)}
+                  key={index}
                 >
-                  {/* Don't have an account? Register */}
-                </Anchor>
-                <Button type='submit' radius='xl' color='dark'>
-                  Submit
+                  {item}
                 </Button>
-              </Group>
-            </form>
-          )}
-        </Paper>
-      </Container>
+              ))}
+            </div>
 
-      <Footer />
-    </main>
+            {isChat && (
+              <form onSubmit={form.onSubmit(handleSubmit)}>
+                <Stack>
+                  <TextInput
+                    required
+                    label='Full Name'
+                    placeholder='Your name'
+                    value={form.values.name}
+                    onChange={(event) =>
+                      form.setFieldValue("name", event.currentTarget.value)
+                    }
+                    radius='md'
+                  />
+
+                  <TextInput
+                    required
+                    label='Contact Details'
+                    placeholder='hello@azzet.in'
+                    value={form.values.contact}
+                    onChange={(event) =>
+                      form.setFieldValue("contact", event.currentTarget.value)
+                    }
+                    error={form.errors.email && "Invalid email"}
+                    radius='md'
+                  />
+
+                  <Textarea
+                    required
+                    mt='md'
+                    label='Message'
+                    placeholder='Your message'
+                    maxRows={10}
+                    minRows={5}
+                    autosize
+                    name='message'
+                    variant='default'
+                    {...form.getInputProps("message")}
+                  />
+                </Stack>
+
+                {/* TODO paynow button*/}
+
+                <Group position='apart' mt='xl' pt={20}>
+                  <Anchor
+                    component='button'
+                    type='button'
+                    color='dimmed'
+                    size='xs'
+                  >
+                    {/* Don't have an account? Register */}
+                  </Anchor>
+                  <Button type='submit' radius='xl' color='dark'>
+                    Submit
+                  </Button>
+                </Group>
+              </form>
+            )}
+          </Paper>
+        </Container>
+
+        <Footer />
+      </main>
+    </>
   );
 };
 

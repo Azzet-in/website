@@ -131,13 +131,17 @@ const links = [
     title: "How to Play",
     href: "/",
   },
-  // {
-  //   title: "Jobs",
-  //   href: "/contact",
-  // },
   {
-    title: "Invite Friends",
-    href: "/",
+    title: "Our Partners",
+    href: "/partners",
+  },
+  {
+    title: "Help & Support",
+    href: "/support",
+  },
+  {
+    title: "Registration",
+    href: "/register",
   },
   // {
   //   title: "Helpdesk",
