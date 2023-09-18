@@ -87,7 +87,7 @@ const Partners = (props: PaperProps) => {
                       live market data and valuable market insights. With its
                       assistance, users can conveniently track the price of{" "}
                       <Link
-                        href='https://in.tradingview.com/symbols/CBOT_MINI-YM1!'
+                        href='https://www.tradingview.com/symbols/CBOT_MINI-YM1!/'
                         style={{
                           textDecoration: "none",
                           color: "#06425A",
